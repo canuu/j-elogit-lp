@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="e-logitの資料ダウンロードページ。お客様情報を入力して資料をダウンロードいただけます。">
+    <title>資料ダウンロード | e-logit（イー・ロジット）</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        /* カスタムカラー定義 */
+        :root {
+            --primary-blue: #004098;
+            --accent-orange: #FF9900;
+        }
+        
+        /* スムーススクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* ホバーエフェクト */
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#004098',
+                        'accent': '#FF9900',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white">
+
+    <!-- ========== ヘッダー（スティッキー） ========== -->
+    <header class="bg-blue-50 shadow-sm sticky top-0 z-50 transition-all duration-300" id="main-header">
+        <div class="w-full h-[80px]">
+            <div class="flex items-center justify-center md:justify-between w-full h-full relative">
+                <!-- ロゴ -->
+                <div class="flex items-center gap-0 absolute left-2 top-1/2 -translate-y-1/2">
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/images/Logo.ref.png" alt="e-logit ロゴ" style="width: 59px; height: 59px; margin: 0px 15px 0px 13.7953px;">
+                    </a>
+                    <span class="text-xs font-bold flex items-center hidden sm:flex" style="font-family: 'Noto Sans JP', sans-serif; color: #000000; width: 132px;">株式会社イー・ロジット</span>
+                </div>
+                
+                <!-- 右側のCTAボタン -->
+                <div class="flex items-center gap-3 absolute right-2.5 top-1/2 -translate-y-1/2 md:right-8">
+                    <a href="index.html#contact-form" class="inline-flex items-center bg-white hover:bg-gray-50 text-primary border-2 border-primary font-bold py-2 px-3 md:px-6 rounded-lg transition-all duration-300">
+                        お問い合わせ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== 資料ダウンロードフォーム ========== -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    資料ダウンロード
+                </h1>
+                <p class="text-lg text-gray-600">
+                    お客様情報を入力いただくと、e-logitの詳細資料をダウンロードいただけます。
+                </p>
+            </div>
+            
+            <form class="bg-white rounded-xl shadow-md p-8" id="download-form">
+                <!-- お名前 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">
+                        お名前 <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+                
+                <!-- 会社名 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">
+                        会社名 <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+                
+                <!-- 部署名 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">
+                        部署名
+                    </label>
+                    <input type="text" id="department" name="department" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                
+                <!-- メールアドレス -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">
+                        メールアドレス <span class="text-red-500">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+                
+                <!-- 電話番号 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">
+                        電話番号 <span class="text-red-500">*</span>
+                    </label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+                
+                <!-- 弊社を知ったきっかけ -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">
+                        弊社を知ったきっかけ
+                    </label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="source" value="search" class="mr-2">
+                            <span class="text-gray-700">検索エンジン</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="source" value="sns" class="mr-2">
+                            <span class="text-gray-700">SNS</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="source" value="referral" class="mr-2">
+                            <span class="text-gray-700">紹介</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="source" value="advertisement" class="mr-2">
+                            <span class="text-gray-700">広告</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="source" value="other" class="mr-2">
+                            <span class="text-gray-700">その他</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- プライバシーポリシー同意 -->
+                <div class="mb-6">
+                    <label class="flex items-start">
+                        <input type="checkbox" id="privacy" name="privacy" class="mr-2 mt-1" required>
+                        <span class="text-gray-700 text-sm">
+                            <a href="#" class="text-primary underline">プライバシーポリシー</a>に同意します。
+                        </span>
+                    </label>
+                </div>
+                
+                <!-- 送信ボタン -->
+                <div class="text-center">
+                    <button type="submit" class="inline-flex items-center justify-center bg-accent hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                        資料をダウンロード
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========== フッター ========== -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- 会社情報 -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">株式会社イー・ロジット</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        物流の『忙しい』をゼロにして、<br>
+                        売上を最大化する物流BPOサービスを提供しています。
+                    </p>
+                </div>
+                
+                <!-- サービス -->
+                <div>
+                    <h4 class="font-bold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">フルフィルメントサービス</a></li>
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">365日出荷</a></li>
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">WMS導入</a></li>
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">コンタクトセンター</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 会社情報 -->
+                <div>
+                    <h4 class="font-bold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">会社概要</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ニュース</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">採用情報</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- お問い合わせ -->
+                <div>
+                    <h4 class="font-bold mb-4">お問い合わせ</h4>
+                    <p class="text-gray-300 text-sm mb-4">
+                        資料請求・お見積もりのご相談など、<br>
+                        お気軽にお問い合わせください。
+                    </p>
+                    <a href="index.html#contact-form" class="inline-flex items-center text-accent hover:text-orange-400 transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                        お問い合わせフォーム
+                    </a>
+                </div>
+            </div>
+            
+            <!-- コピーライト -->
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 株式会社イー・ロジット. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JavaScript ========== -->
+    <script>
+        // フォームバリデーション
+        document.getElementById('download-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const privacy = document.getElementById('privacy').checked;
+            
+            if (!name || !company || !email || !phone || !privacy) {
+                alert('必須項目をすべて入力してください。');
+                return;
+            }
+            
+            // メールアドレス形式チェック
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('正しいメールアドレスを入力してください。');
+                return;
+            }
+            
+            // ここで資料ダウンロード処理（実際のダウンロードリンクに置き換え）
+            alert('資料のダウンロードを開始します。');
+            // window.location.href = 'path/to/download.pdf'; // 実際のダウンロードURLに置き換え
+        });
+    </script>
+</body>
+</html>
